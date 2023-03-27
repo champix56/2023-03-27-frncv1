@@ -1,10 +1,10 @@
 import React from 'react';
 import {Text, View} from 'react-native';
-
+import styles from './Button.styles';
 const Button = () => {
   return (
-    <View>
-      <Text>Demat Breizh</Text>
+    <View style={styles.Button}>
+      <Text style={styles.text}>Demat Breizh</Text>
     </View>
   );
 };
