@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import {SafeAreaView, useColorScheme} from 'react-native';
+import {SafeAreaView, useColorScheme, Button as NButton} from 'react-native';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import Button from './components/uis/Button/Button';
@@ -21,6 +21,7 @@ function App(): JSX.Element {
   return (
     <SafeAreaView style={backgroundStyle}>
       <Button />
+      <NButton title="Hello world"></NButton>
     </SafeAreaView>
   );
 }
