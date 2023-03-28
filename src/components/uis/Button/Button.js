@@ -17,5 +17,11 @@ const Button = props => {
 Button.propTypes = {
   bgcolor: PropTypes.string.isRequired,
   color: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+  style: PropTypes.object,
+};
+Button.defaultProps = {
+  bgcolor: 'skyblue',
+  color: 'white',
 };
 export default Button;
