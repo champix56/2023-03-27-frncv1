@@ -38,7 +38,7 @@ function App(): JSX.Element {
       <Button>
         <Text>Button 1</Text>
       </Button>
-      <Button children="Button3" />
+      {/* <Button children="Button3" /> */}
       <Button text="Button by text" />
       <Button
         children={[
