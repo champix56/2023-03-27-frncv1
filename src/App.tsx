@@ -5,7 +5,7 @@
  * @format
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import {
   SafeAreaView,
   useColorScheme,
@@ -25,7 +25,7 @@ function App(): JSX.Element {
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
-  let counter = 0;
+  const [counter, setcounter] = useState(0);
   return (
     <SafeAreaView style={backgroundStyle}>
       <View>
@@ -37,7 +37,7 @@ function App(): JSX.Element {
       <Button
         bgcolor="tomato"
         onPress={() => {
-          counter -= 1;
+          setcounter(counter - 1);
           console.log(counter);
         }}>
         <Image
@@ -51,7 +51,7 @@ function App(): JSX.Element {
       <Button
         bgcolor="skyblue"
         onPress={() => {
-          counter += 1;
+          setcounter(counter + 1);
           console.log(counter);
         }}>
         <Image
