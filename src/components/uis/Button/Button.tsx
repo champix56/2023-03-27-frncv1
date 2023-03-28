@@ -11,7 +11,7 @@ interface IButtonProps {
   onPress?: Function;
 }
 const Button: React.FC<IButtonProps> = props => {
-  console.log(props);
+  //console.log(props);
   return (
     <TouchableHighlight
       style={{...styles.Button, ...props.style, backgroundColor: props.bgcolor}}

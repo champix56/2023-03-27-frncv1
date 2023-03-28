@@ -9,7 +9,6 @@ import React, {useEffect, useState} from 'react';
 import {
   SafeAreaView,
   useColorScheme,
-  Button as NButton,
   Text,
   Image,
   View,
@@ -61,7 +60,7 @@ function App(): JSX.Element {
           source={{
             uri: 'https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-minus-circled-512.png',
           }}
-          style={{width: 64, height: 64}}
+          style={styles.buttonIcon}
         />
         <Text style={styles.buttonText}>Enlever</Text>
       </Button>
@@ -75,7 +74,7 @@ function App(): JSX.Element {
           source={{
             uri: 'https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-plus-circled-256.png',
           }}
-          style={{width: 64, height: 64}}
+          style={styles.buttonIcon}
         />
         <Text style={styles.buttonText}>Ajouter</Text>
       </Button>
@@ -92,6 +91,7 @@ const styles = StyleSheet.create({
     fontWeight: '900',
   },
   buttonText: {color: 'white', fontSize: 18, fontWeight: '900'},
+  buttonIcon: {width: 64, height: 64},
 });
 
 export default App;
