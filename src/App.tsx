@@ -5,7 +5,7 @@
  * @format
  */
 
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   SafeAreaView,
   useColorScheme,
@@ -26,6 +26,17 @@ function App(): JSX.Element {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
   const [counter, setcounter] = useState(0);
+  useEffect(() => {
+    console.log('====================================');
+    console.log('Voici la nouvelle valeur de counter : ', counter);
+    console.log('====================================');
+    /*
+    fonction de unmount des valeurs
+    //return () => {
+    //   effect
+    // };
+    */
+  }, [counter]);
   return (
     <SafeAreaView style={backgroundStyle}>
       <View>
