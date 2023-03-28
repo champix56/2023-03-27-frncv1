@@ -37,6 +37,12 @@ function App(): JSX.Element {
     // };
     */
   }, [counter]);
+  useEffect(() => {
+    console.log('montage du composant APP');
+    return () => {
+      console.log('demontage du cmp APP');
+    };
+  }, []);
   return (
     <SafeAreaView style={backgroundStyle}>
       <View>
