@@ -12,6 +12,8 @@ import {
   Button as NButton,
   Text,
   Image,
+  View,
+  StyleSheet,
 } from 'react-native';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
@@ -23,38 +25,56 @@ function App(): JSX.Element {
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
-
+  let counter = 0;
   return (
     <SafeAreaView style={backgroundStyle}>
-      <Button bgcolor="tomato" color="green" style={{borderRadius: 64}}>
+      <View>
+        <Text style={styles.displayCounterText}>Valeur de mon compteur</Text>
+        <Text style={{...styles.displayCounterText, ...styles.big}}>
+          {counter}
+        </Text>
+      </View>
+      <Button
+        bgcolor="tomato"
+        onPress={() => {
+          counter -= 1;
+          console.log(counter);
+        }}>
         <Image
           source={{
-            uri: 'https://cdn0.iconfinder.com/data/icons/colourful-education/250/brain-256.png',
+            uri: 'https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-minus-circled-512.png',
           }}
-          style={{width: 32, height: 32}}
+          style={{width: 64, height: 64}}
         />
-        <Text>Cliquez ici</Text>
+        <Text style={styles.buttonText}>Enlever</Text>
       </Button>
-      <Button>
-        <Text>Button 1</Text>
-      </Button>
-      {/* <Button children="Button3" /> */}
-      <Button text="Button by text" />
       <Button
-        children={[
-          <Image
-            source={{
-              uri: 'https://cdn0.iconfinder.com/data/icons/colourful-education/250/brain-256.png',
-            }}
-          />,
-          <Text>Cliquez MOI!!</Text>,
-        ]}
-      />
-      <NButton title="Button natif RN" />
+        bgcolor="skyblue"
+        onPress={() => {
+          counter += 1;
+          console.log(counter);
+        }}>
+        <Image
+          source={{
+            uri: 'https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-plus-circled-256.png',
+          }}
+          style={{width: 64, height: 64}}
+        />
+        <Text style={styles.buttonText}>Ajouter</Text>
+      </Button>
     </SafeAreaView>
   );
 }
 
-// const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  displayCounterText: {
+    textAlign: 'center',
+  },
+  big: {
+    fontSize: 18,
+    fontWeight: '900',
+  },
+  buttonText: {color: 'white', fontSize: 18, fontWeight: '900'},
+});
 
 export default App;
