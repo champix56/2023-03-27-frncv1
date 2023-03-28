@@ -34,7 +34,7 @@
         "component": "grc-templates/genericLayoutFunction/TemplateName.js",
         "style": "grc-templates/genericLayoutFunction/TemplateName.styles.js",
         "test": "grc-templates/TemplateName-test.js",
-        "story": "grc-templates/genericLayoutFunctionFunction/Readme.md"
+        "story": "grc-templates/genericLayoutFunction/Readme.md"
       }
     }
   }
