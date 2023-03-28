@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Text, TouchableHighlight} from 'react-native';
+import {Text, TouchableHighlight, View} from 'react-native';
 import styles from './Button.styles';
 const Button = props => {
   console.log(props);
@@ -10,9 +10,13 @@ const Button = props => {
       onPress={evt => {
         console.log(evt.target);
       }}>
-      {props.text ? (
-        <Text style={{...styles.text, color: props.color}}>{props.text}</Text>
-      ) : null}
+      <View>
+        {props.children !== undefined ? (
+          props.children
+        ) : (
+          <Text style={{...styles.text, color: props.color}}>{props.text}</Text>
+        )}
+      </View>
     </TouchableHighlight>
   );
 };

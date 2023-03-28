@@ -6,7 +6,13 @@
  */
 
 import React from 'react';
-import {SafeAreaView, useColorScheme, Button as NButton} from 'react-native';
+import {
+  SafeAreaView,
+  useColorScheme,
+  Button as NButton,
+  Text,
+  Image,
+} from 'react-native';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import Button from './components/uis/Button/Button';
@@ -20,15 +26,31 @@ function App(): JSX.Element {
 
   return (
     <SafeAreaView style={backgroundStyle}>
+      <Button bgcolor="tomato" color="green" style={{borderRadius: 64}}>
+        <Image
+          source={{
+            uri: 'https://cdn0.iconfinder.com/data/icons/colourful-education/250/brain-256.png',
+          }}
+          style={{width: 32, height: 32}}
+        />
+        <Text>Cliquez ici</Text>
+      </Button>
+      <Button>
+        <Text>Button 1</Text>
+      </Button>
+      {/* <Button children="Button3" /> */}
+      <Button text="Button by text" />
       <Button
-        text="Content"
-        bgcolor="tomato"
-        color="green"
-        style={{borderRadius: 64}}
+        children={[
+          <Image
+            source={{
+              uri: 'https://cdn0.iconfinder.com/data/icons/colourful-education/250/brain-256.png',
+            }}
+          />,
+          <Text>Cliquez MOI!!</Text>,
+        ]}
       />
-      <Button text="Button2" />
-      <Button text="Button3" />
-      <NButton title="Hello world"></NButton>
+      <NButton title="Button natif RN" />
     </SafeAreaView>
   );
 }
