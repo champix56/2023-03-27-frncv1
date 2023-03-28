@@ -17,7 +17,7 @@ const Button: React.FC<IButtonProps> = props => {
       onPress={evt => {
         console.log(evt.target);
       }}>
-      <View>
+      <View style={styles.mainView}>
         {undefined !== props.children ? (
           props.children
         ) : (

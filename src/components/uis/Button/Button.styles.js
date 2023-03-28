@@ -14,4 +14,8 @@ export default StyleSheet.create({
     textAlign: 'center',
     fontSize: 17,
   },
+  mainView: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
 });
