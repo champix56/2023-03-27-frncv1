@@ -9,6 +9,9 @@ import React from 'react';
 import {SafeAreaView, useColorScheme, StyleSheet} from 'react-native';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
+import MainLayout from './components/layouts/MainLayout/MainLayout';
+import Menu from './components/uis/Menu/Menu';
+import ListProduct from './pages/ListProduct/ListProduct';
 
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -17,7 +20,14 @@ function App(): JSX.Element {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
-  return <SafeAreaView style={backgroundStyle}></SafeAreaView>;
+  return (
+    <SafeAreaView style={backgroundStyle}>
+      <MainLayout>
+        <ListProduct />
+        <Menu />
+      </MainLayout>
+    </SafeAreaView>
+  );
 }
 
 const styles = StyleSheet.create({});
