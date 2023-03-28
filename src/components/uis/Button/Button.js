@@ -5,7 +5,7 @@ const Button = props => {
   //console.log(props);
   return (
     <TouchableHighlight
-      style={styles.Button}
+      style={{...styles.Button, ...props.style}}
       onPress={evt => {
         console.log(evt.target);
       }}>
