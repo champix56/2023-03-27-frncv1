@@ -5,12 +5,13 @@
  * @format
  */
 
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   SafeAreaView,
   useColorScheme,
   StyleSheet,
   ScrollView,
+  Text,
 } from 'react-native';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
@@ -24,11 +25,23 @@ function App(): JSX.Element {
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
-
+  const [produits, setProduits] = useState([]);
+  useEffect(() => {
+    fetch(
+      'http://my-json-server.typicode.com/champix56/frncv1-2023-03-27/Products',
+    )
+      .then(retour => {
+        return retour.json();
+      })
+      .then(arr => setProduits(arr));
+  }, []);
   return (
     <SafeAreaView style={backgroundStyle}>
       <MainLayout>
         <ScrollView style={styles.page}>
+          {produits.map((p: any) => (
+            <Text>{p.name}</Text>
+          ))}
           <ListProduct />
         </ScrollView>
         <Menu />
