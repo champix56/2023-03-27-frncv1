@@ -6,7 +6,12 @@
  */
 
 import React from 'react';
-import {SafeAreaView, useColorScheme, StyleSheet} from 'react-native';
+import {
+  SafeAreaView,
+  useColorScheme,
+  StyleSheet,
+  ScrollView,
+} from 'react-native';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import MainLayout from './components/layouts/MainLayout/MainLayout';
@@ -23,13 +28,19 @@ function App(): JSX.Element {
   return (
     <SafeAreaView style={backgroundStyle}>
       <MainLayout>
-        <ListProduct />
+        <ScrollView style={styles.page}>
+          <ListProduct />
+        </ScrollView>
         <Menu />
       </MainLayout>
     </SafeAreaView>
   );
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  page: {
+    flexGrow: 1,
+  },
+});
 
 export default App;
