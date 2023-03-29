@@ -14,9 +14,16 @@ produits.slice = createSlice({
     clearProducts: state => {
       state.produits = [];
     },
+    saveProduct: (state, action) => {
+      const position = state.produits.findIndex(
+        p => p.id === action.payload.id,
+      );
+      state.produits[position] = action.payload;
+    },
   },
 });
 
-export const {loadProducts, clearProducts} = produits.slice.actions;
+export const {loadProducts, clearProducts, saveProduct} =
+  produits.slice.actions;
 
 export default produits.slice.reducer;
