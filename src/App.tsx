@@ -18,12 +18,9 @@ import {useSelector} from 'react-redux';
 import {useDispatch} from 'react-redux';
 import MainLayout from './components/layouts/MainLayout/MainLayout';
 import Menu from './components/uis/Menu/Menu';
-import ProduitThumbnail from './components/uis/ProduitThumbnail/ProduitThumbnail';
 import IProduit from './interfaces/IProduits';
-import EditProduct, {
-  ConnectedProductEditor,
-} from './pages/EditProduct/EditProduct';
-import ListProduct from './pages/ListProduct/ListProduct';
+import Home from './pages/Home/Home';
+import {setPage} from './store/navigation.slice';
 import {loadProducts} from './store/produits.slice';
 
 function App(props: any): JSX.Element {
@@ -32,6 +29,9 @@ function App(props: any): JSX.Element {
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
+  useEffect(() => {
+    props.changeChild(<Home produits={[{}]} />);
+  }, []);
   useEffect(() => {
     console.log('===========PROPS APP CHANGE=========');
     console.log(props);
@@ -42,11 +42,12 @@ function App(props: any): JSX.Element {
       <MainLayout>
         <ScrollView style={styles.page}>
           {/* <ListProduct produits={props.produits} /> */}
-          <ConnectedProductEditor idproduit={1} />
+          {/* <ConnectedProductEditor idproduit={1} /> */}
           {/*  produit={props.produits[0]}
             saveProduct={(newProduct: IProduit) => {
               console.log(newProduct);
             }} */}
+          {undefined !== props.children && props.children}
         </ScrollView>
         <Menu />
       </MainLayout>
@@ -62,6 +63,7 @@ const styles = StyleSheet.create({
 
 export const StoreConnectedApp = (props: any) => {
   const produits = useSelector((state: any) => state.stock.produits);
+  const children = useSelector((state: any) => state.navigation.component);
   const disptach = useDispatch();
   return (
     <App
@@ -69,6 +71,10 @@ export const StoreConnectedApp = (props: any) => {
       produits={produits}
       loadProducts={(arr: Array<IProduit>) => {
         disptach(loadProducts(arr));
+      }}
+      children={children}
+      changeChild={(newChild: React.Component) => {
+        disptach(setPage(newChild));
       }}
     />
   );

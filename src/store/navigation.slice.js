@@ -1,14 +1,20 @@
 import {createSlice} from '@reduxjs/toolkit';
 
-const initialState = {};
+const initialState = {
+  component: null,
+};
 
 const navigation = {};
 navigation.slice = createSlice({
   name: 'navigation',
   initialState,
-  reducers: {},
+  reducers: {
+    setPage: (state, action) => {
+      state.component = action.payload;
+    },
+  },
 });
 
-export const {} = navigation.slice.actions;
+export const {setPage} = navigation.slice.actions;
 
 export default navigation.slice.reducer;
