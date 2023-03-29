@@ -31,7 +31,9 @@ const EditProduct = props => {
     editProductInitialStateValue,
   );
   useEffect(() => {
-    setProduitState(props.produit);
+    if (props.produit) {
+      setProduitState(props.produit);
+    }
   }, [props.produit]);
   return (
     <>
