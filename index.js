@@ -13,6 +13,7 @@ import {store} from './src/store/store';
 const ProviderWrapper = () => {
   return (
     <Provider store={store}>
+      {/* <App produits={} loadProducts={()=>{}} /> */}
       <StoreConnectedApp />
     </Provider>
   );

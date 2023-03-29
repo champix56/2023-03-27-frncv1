@@ -14,7 +14,8 @@ import {
 } from 'react-native';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
-import {connect} from 'react-redux';
+import {useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import MainLayout from './components/layouts/MainLayout/MainLayout';
 import Menu from './components/uis/Menu/Menu';
 import ProduitThumbnail from './components/uis/ProduitThumbnail/ProduitThumbnail';
@@ -28,8 +29,6 @@ function App(props: any): JSX.Element {
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
-  const produits: Array<IProduit> = [];
-  // const [produits, setProduits] = useState([]);
   useEffect(() => {
     fetch(
       'http://localhost:7956/Products',
@@ -42,7 +41,7 @@ function App(props: any): JSX.Element {
         // setProduits(arr);
         console.log(loadProducts(arr));
         //store.dispatch(loadProducts(arr));
-        props.lodProducts(arr);
+        props.loadProducts(arr);
       });
   }, []);
   useEffect(() => {
@@ -54,7 +53,7 @@ function App(props: any): JSX.Element {
     <SafeAreaView style={backgroundStyle}>
       <MainLayout>
         <ScrollView style={styles.page}>
-          <ListProduct produits={produits} />
+          <ListProduct produits={props.produits} />
         </ScrollView>
         <Menu />
       </MainLayout>
@@ -68,18 +67,18 @@ const styles = StyleSheet.create({
   },
 });
 
-function mapStateToProps(storeState: any, ownProps: any) {
-  return {...ownProps, produits: storeState.produits};
-}
-function mapDispatchToProps(dispatch: Function) {
-  return {
-    lodProducts: (produits: Aray<IProduit>) => {
-      dispatch(loadProducts(produits));
-    },
-  };
-}
-export const StoreConnectedApp = connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(App);
+export const StoreConnectedApp = (props: any) => {
+  const produits = useSelector((state: any) => state.produits);
+  const disptach = useDispatch();
+  return (
+    <App
+      {...props}
+      produits={produits}
+      loadProducts={(arr: Array<IProduit>) => {
+        disptach(loadProducts(arr));
+      }}
+    />
+  );
+};
+
 export default App;
