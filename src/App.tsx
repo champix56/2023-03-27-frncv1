@@ -12,6 +12,7 @@ import {
   StyleSheet,
   ScrollView,
   Text,
+  View,
 } from 'react-native';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
@@ -40,10 +41,7 @@ function App(): JSX.Element {
     <SafeAreaView style={backgroundStyle}>
       <MainLayout>
         <ScrollView style={styles.page}>
-          {produits.map((p: any, i: number) => {
-            return <Text key={`produit-${i}`}>{p.name}</Text>;
-          })}
-          <ListProduct />
+          <ListProduct produits={produits} />
         </ScrollView>
         <Menu />
       </MainLayout>

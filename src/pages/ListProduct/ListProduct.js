@@ -12,7 +12,7 @@ import ProduitThumbnail from '../../components/uis/ProduitThumbnail/ProduitThumb
 const ListProduct = props => {
   return (
     <View style={styles.ListProduct}>
-      <Text>liste de produits</Text>
+      <Text style={styles.title}>liste de produits</Text>
       <View style={styles.scview}>
         {props.produits.map((p, i) => (
           <ProduitThumbnail produit={p} key={`p${i}`} />
