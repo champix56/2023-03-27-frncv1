@@ -9,6 +9,8 @@ import {
 import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import Button from '../../components/uis/Button/Button';
+import {saveProduct} from '../../store/produits.slice';
+import {useSelector, useDispatch} from 'react-redux';
 // import styles from './EditProduct.styles';
 /**
  * initial value of editProductState
@@ -101,13 +103,34 @@ const EditProduct = props => {
           </View>
         </View>
         <View>
-          <Button text="Valider"></Button>
+          <Button
+            text="Valider"
+            onPress={() => {
+              props.saveProduct(produitState);
+            }}
+          />
         </View>
       </View>
       <Text>{JSON.stringify(props)}</Text>
     </>
   );
 };
+
+export const ConnectedProductEditor = props => {
+  const produit = useSelector(state =>
+    state.stock.produits.find(p => p.id === props.idproduit),
+  );
+  const dispatch = useDispatch();
+  return (
+    <EditProduct
+      produit={produit}
+      saveProduct={newProd => {
+        dispatch(saveProduct(newProd));
+      }}
+    />
+  );
+};
+
 const styles = StyleSheet.create({
   EditProduct: {},
   mainContainer: {
