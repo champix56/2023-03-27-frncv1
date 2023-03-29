@@ -3,8 +3,7 @@ import {StyleSheet} from 'react-native';
 export default StyleSheet.create({
   Menu: {
     flexDirection: 'row',
-    alignContent: 'space-between',
-    alignItems: 'center',
+    justifyContent: 'space-around',
     backgroundColor: 'grey',
   },
   buttonImage: {
