@@ -20,6 +20,7 @@ import MainLayout from './components/layouts/MainLayout/MainLayout';
 import Menu from './components/uis/Menu/Menu';
 import ProduitThumbnail from './components/uis/ProduitThumbnail/ProduitThumbnail';
 import IProduit from './interfaces/IProduits';
+import EditProduct from './pages/EditProduct/EditProduct';
 import ListProduct from './pages/ListProduct/ListProduct';
 import {loadProducts} from './store/produits.slice';
 
@@ -53,7 +54,8 @@ function App(props: any): JSX.Element {
     <SafeAreaView style={backgroundStyle}>
       <MainLayout>
         <ScrollView style={styles.page}>
-          <ListProduct produits={props.produits} />
+          {/* <ListProduct produits={props.produits} /> */}
+          <EditProduct />
         </ScrollView>
         <Menu />
       </MainLayout>
@@ -68,7 +70,7 @@ const styles = StyleSheet.create({
 });
 
 export const StoreConnectedApp = (props: any) => {
-  const produits = useSelector((state: any) => state.produits);
+  const produits = useSelector((state: any) => state.stock.produits);
   const disptach = useDispatch();
   return (
     <App
