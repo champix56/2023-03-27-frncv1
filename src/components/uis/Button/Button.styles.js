@@ -7,6 +7,7 @@ export default StyleSheet.create({
     borderRadius: 8,
     backgroundColor: 'skyblue',
     padding: 4,
+    alignItems: 'center',
   },
   text: {
     color: 'white',

@@ -23,6 +23,46 @@
           "image": "https://www.paysanbreton.com/sites/default/files/product/2022-02/beurre-demi-sel-new-pack.png",
           "description" : "dfjklkjhgfghjklm",
           "stock" : 10 
-        }
+        },
+      {
+          "id": 4,
+          "name": "Kouign aman",
+          "prix": 12.9,
+          "image": "https://robingirardpatisserie.com/wp-content/uploads/2023/02/Patisserie-de-voyage.webp",
+          "description" : "Kouign aman 6 parts",
+          "stock" : 10 
+        },
+      {
+          "id": 5,
+          "name": "Cidre brut 75cl",
+          "prix": 2.3,
+          "image": "https://cidrebayeux.com/media/catalog/product/cache/cd8a9549e5f1ee1d4a9249bc4464c706/b/a/bayeux_gms_brut_75cl_1500x1500-300dpi_rvb.png",
+          "description" : "Cidre nomand brut",
+          "stock" : 10 
+        },
+      {
+          "id": 6,
+          "name": "Far breton",
+          "prix": 12.3,
+          "image": "https://www.patisseriebretonne.fr/Files/119625/Img/13/recette-farbreton.jpg",
+          "description" : "Far breton prunneaux 4 parts",
+          "stock" : 10 
+        },
+        {
+            "id": 7,
+            "name": "Pendant triskel",
+            "prix": 9.3,
+            "image": "https://misti-gri.com/wp-content/uploads/2021/04/8876-n0aivu-removebg-preview.png",
+            "description" : "Pendant adulte triskel",
+            "stock" : 10 
+          },
+        {
+            "id": 8,
+            "name": "Mug 56",
+            "prix": 10,
+            "image": "https://cdn.shopify.com/s/files/1/2786/1286/products/MOCK-UP-EUR_Serig-MugBasic-Bretagne_V1-Blanc-Droite_1200x1200.png?v=1615799384",
+            "description" : "Mug bretagne morbihan",
+            "stock" : 10 
+          }
   ]
 }

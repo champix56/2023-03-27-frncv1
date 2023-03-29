@@ -16,34 +16,37 @@ import {
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import MainLayout from './components/layouts/MainLayout/MainLayout';
+import Produit from './components/uis/Produit/Produit';
 import Menu from './components/uis/Menu/Menu';
 import ListProduct from './pages/ListProduct/ListProduct';
-
+import ProduitThumbnail from './components/uis/ProduitThumbnail/ProduitThumbnail';
+import Home from './pages/Home/Home';
+import IProduit from './interfaces/IProduits';
+const initialProduitsState: Array<IProduit> = [];
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
-  const [produits, setProduits] = useState([]);
+  const [produits, setProduits] = useState(initialProduitsState);
   useEffect(() => {
-    fetch(
-      'http://my-json-server.typicode.com/champix56/frncv1-2023-03-27/Products',
-    )
+    fetch('http://localhost:7956/Products')
       .then(retour => {
         return retour.json();
       })
-      .then(arr => setProduits(arr));
+      .then(arr => {
+        console.log(arr);
+        return setProduits(arr);
+      });
   }, []);
   return (
     <SafeAreaView style={backgroundStyle}>
       <MainLayout>
-        <ScrollView style={styles.page}>
-          {produits.map((p: any) => (
-            <Text>{p.name}</Text>
-          ))}
-          <ListProduct />
-        </ScrollView>
+        <Home produits={produits} />
+        {/* <ScrollView style={styles.page}>
+          <ListProduct produits={produits}/>
+        </ScrollView> */}
         <Menu />
       </MainLayout>
     </SafeAreaView>

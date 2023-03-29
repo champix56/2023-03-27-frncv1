@@ -1,37 +1,41 @@
-import {View, Text} from 'react-native';
+import {View, Text, Image} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import styles from './ListProduct.styles';
-/**
- * initial value of listProductState
- */
-const listProductInitialStateValue = '';
+import ProduitThumbnail from '../../components/uis/ProduitThumbnail/ProduitThumbnail';
+import Button from '../../components/uis/Button/Button';
+import buttonStyle from '../../components/uis/Button/Button.styles';
+
 /**
  * ListProduct component
  * @param {object} props ListProduct props of component
  * @returns render of ListProduct component
  */
 const ListProduct = props => {
-  const [listProductState, setlistProductState] = useState(
-    listProductInitialStateValue,
-  );
-  useEffect(() => {
-    console.log('update/mount de de listProductState');
-  }, [listProductState]);
-  useEffect(() => {
-    console.log('mount de de listProduct');
-    return () => {
-      console.log('unmount de de listProduct');
-    };
-  }, []);
   return (
-    <View style={styles.ListProduct}>
-      <Text>listProduct</Text>
-    </View>
+    <>
+      <View>
+        <Text style={styles.listeProduitsTitle}>Produit</Text>
+      </View>
+      <View style={styles.ListProduct}>
+        {props.produits.map(p => (
+          <ProduitThumbnail produit={p} key={p.id} />
+        ))}
+      </View>
+      <Button style={{borderRadius: undefined}}>
+        <Image
+          source={{
+            uri: 'https://cdn3.iconfinder.com/data/icons/snowish/128x128/actions/gtk-refresh.png',
+          }}
+          style={{width: 64, height: 64}}
+        />
+        <Text style={buttonStyle.text}>Refresh</Text>
+      </Button>
+    </>
   );
 };
 
-ListProduct.propTypes = {};
+ListProduct.propTypes = {produits: PropTypes.array.isRequired};
 ListProduct.defaultProps = {};
 
 export default ListProduct;
