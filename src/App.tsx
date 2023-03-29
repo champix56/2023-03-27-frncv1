@@ -20,7 +20,9 @@ import MainLayout from './components/layouts/MainLayout/MainLayout';
 import Menu from './components/uis/Menu/Menu';
 import ProduitThumbnail from './components/uis/ProduitThumbnail/ProduitThumbnail';
 import IProduit from './interfaces/IProduits';
-import EditProduct from './pages/EditProduct/EditProduct';
+import EditProduct, {
+  ConnectedProductEditor,
+} from './pages/EditProduct/EditProduct';
 import ListProduct from './pages/ListProduct/ListProduct';
 import {loadProducts} from './store/produits.slice';
 
@@ -55,12 +57,11 @@ function App(props: any): JSX.Element {
       <MainLayout>
         <ScrollView style={styles.page}>
           {/* <ListProduct produits={props.produits} /> */}
-          <EditProduct
-            produit={props.produits[0]}
+          <ConnectedProductEditor idproduit={5} />
+          {/*  produit={props.produits[0]}
             saveProduct={(newProduct: IProduit) => {
               console.log(newProduct);
-            }}
-          />
+            }} */}
         </ScrollView>
         <Menu />
       </MainLayout>
