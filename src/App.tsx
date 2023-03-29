@@ -17,12 +17,12 @@ import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {connect} from 'react-redux';
 import MainLayout from './components/layouts/MainLayout/MainLayout';
 import Menu from './components/uis/Menu/Menu';
+import ProduitThumbnail from './components/uis/ProduitThumbnail/ProduitThumbnail';
 import IProduit from './interfaces/IProduits';
 import ListProduct from './pages/ListProduct/ListProduct';
 import {loadProducts} from './store/produits.slice';
-import {store} from './store/store';
 
-function App(): JSX.Element {
+function App(props: any): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
@@ -40,9 +40,16 @@ function App(): JSX.Element {
       })
       .then(arr => {
         // setProduits(arr);
-        store.dispatch({type: loadProducts, payload: arr});
+        console.log(loadProducts(arr));
+        //store.dispatch(loadProducts(arr));
+        props.lodProducts(arr);
       });
   }, []);
+  useEffect(() => {
+    console.log('===========PROPS APP CHANGE=========');
+    console.log(props);
+    console.log('======END PROPS APP CHANGE==========');
+  }, [props]);
   return (
     <SafeAreaView style={backgroundStyle}>
       <MainLayout>
@@ -61,13 +68,13 @@ const styles = StyleSheet.create({
   },
 });
 
-function mapStateToProps(ownProps: any, storeState: any) {
+function mapStateToProps(storeState: any, ownProps: any) {
   return {...ownProps, produits: storeState.produits};
 }
 function mapDispatchToProps(dispatch: Function) {
   return {
     lodProducts: (produits: Aray<IProduit>) => {
-      dispatch({type: loadProducts, payload: produits});
+      dispatch(loadProducts(produits));
     },
   };
 }
