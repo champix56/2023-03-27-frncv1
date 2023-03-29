@@ -33,21 +33,6 @@ function App(props: any): JSX.Element {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
   useEffect(() => {
-    fetch(
-      'http://localhost:7956/Products',
-      // 'http://my-json-server.typicode.com/champix56/frncv1-2023-03-27/Products',
-    )
-      .then(retour => {
-        return retour.json();
-      })
-      .then(arr => {
-        // setProduits(arr);
-        console.log(loadProducts(arr));
-        //store.dispatch(loadProducts(arr));
-        props.loadProducts(arr);
-      });
-  }, []);
-  useEffect(() => {
     console.log('===========PROPS APP CHANGE=========');
     console.log(props);
     console.log('======END PROPS APP CHANGE==========');
@@ -57,7 +42,7 @@ function App(props: any): JSX.Element {
       <MainLayout>
         <ScrollView style={styles.page}>
           {/* <ListProduct produits={props.produits} /> */}
-          <ConnectedProductEditor idproduit={5} />
+          <ConnectedProductEditor idproduit={1} />
           {/*  produit={props.produits[0]}
             saveProduct={(newProduct: IProduit) => {
               console.log(newProduct);

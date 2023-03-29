@@ -117,9 +117,11 @@ const EditProduct = props => {
 };
 
 export const ConnectedProductEditor = props => {
-  const produit = useSelector(state =>
-    state.stock.produits.find(p => p.id === props.idproduit),
-  );
+  const produit = useSelector(state => {
+    if (undefined !== state.stock.produits) {
+      return state.stock.produits.find(p => p.id === props.idproduit);
+    } else return editProductInitialStateValue;
+  });
   const dispatch = useDispatch();
   return (
     <EditProduct

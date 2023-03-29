@@ -1,10 +1,10 @@
 import {configureStore, combineReducers} from '@reduxjs/toolkit';
-import produitsReducer from './produits.slice';
+import produitsReducer, {fetchAll} from './produits.slice';
 
 export const store = configureStore({
   reducer: combineReducers({stock: produitsReducer}),
 });
-
+store.dispatch(fetchAll());
 store.subscribe(() => {
   console.log('==========STORE=====================');
   console.log(store.getState());
