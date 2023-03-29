@@ -13,11 +13,11 @@ const ProduitThumbnail = (props: {
   produit: IProduit;
   onPress?: Function;
   onLongPress?: Function;
-  style?: StyleProp<View>;
+  style?: object;
 }) => {
   return (
     <TouchableOpacity
-      style={styles.ProduitThumbnail}
+      style={{...styles.ProduitThumbnail, ...props.style}}
       onPress={() => {
         if (props.onPress) {
           props.onPress(props.produit);

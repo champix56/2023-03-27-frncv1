@@ -1,4 +1,10 @@
-import {View, Text, TouchableHighlight, Image, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  TouchableHighlight,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import styles from './Menu.styles';
@@ -11,7 +17,10 @@ import styles from './Menu.styles';
 const Menu = props => {
   return (
     <View style={styles.Menu}>
-      <TouchableOpacity onPress={() => {}}>
+      <TouchableOpacity
+        onPress={() => {
+          console.log('home');
+        }}>
         <Image
           source={{
             uri: 'https://cdn2.iconfinder.com/data/icons/valentine-day-16/512/683_home_love_heart_wedding_valentine_valentines_day_love-256.png',

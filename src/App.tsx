@@ -45,7 +45,7 @@ function App(): JSX.Element {
       <MainLayout>
         <Home produits={produits} />
         {/* <ScrollView style={styles.page}>
-          <ListProduct produits={produits}/>
+          <ListProduct produits={produits} />
         </ScrollView> */}
         <Menu />
       </MainLayout>
