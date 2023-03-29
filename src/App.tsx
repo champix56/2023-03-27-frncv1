@@ -55,7 +55,12 @@ function App(props: any): JSX.Element {
       <MainLayout>
         <ScrollView style={styles.page}>
           {/* <ListProduct produits={props.produits} /> */}
-          <EditProduct />
+          <EditProduct
+            produit={props.produits[0]}
+            saveProduct={(newProduct: IProduit) => {
+              console.log(newProduct);
+            }}
+          />
         </ScrollView>
         <Menu />
       </MainLayout>
