@@ -9,12 +9,15 @@
     "start": "react-native start",
     "test": "jest",
     "resjson": "adb reverse tcp:7956 tcp:7956 & npx json-server -p 7956 db.json",
-    "makeGenericCmp":"npx generate-react-cli c --type=rnfunction",
-    "makeLayoutCmp":"npx generate-react-cli c --type=rnlayoutfunction"
+    "makeGenericCmp": "npx generate-react-cli c --type=rnfunction",
+    "makeLayoutCmp": "npx generate-react-cli c --type=rnlayoutfunction"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.3",
     "react": "18.2.0",
-    "react-native": "0.71.4"
+    "react-native": "0.71.4",
+    "react-redux": "^8.0.5",
+    "redux": "^4.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
