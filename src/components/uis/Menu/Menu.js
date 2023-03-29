@@ -12,7 +12,7 @@ const menuInitialStateValue = '';
  * @returns render of Menu component
  */
 const Menu = props => {
-  console.warn('refresh menu');
+  //console.warn('refresh menu');
   return (
     <View style={styles.Menu}>
       <TouchableHighlight onPress={() => {}}>
