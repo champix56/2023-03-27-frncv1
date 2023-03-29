@@ -14,8 +14,10 @@ import {
 } from 'react-native';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
+import {connect} from 'react-redux';
 import MainLayout from './components/layouts/MainLayout/MainLayout';
 import Menu from './components/uis/Menu/Menu';
+import IProduit from './interfaces/IProduits';
 import ListProduct from './pages/ListProduct/ListProduct';
 import {loadProducts} from './store/produits.slice';
 import {store} from './store/store';
@@ -26,7 +28,8 @@ function App(): JSX.Element {
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
-  const [produits, setProduits] = useState([]);
+  const produits: Array<IProduit> = [];
+  // const [produits, setProduits] = useState([]);
   useEffect(() => {
     fetch(
       'http://localhost:7956/Products',
@@ -36,7 +39,7 @@ function App(): JSX.Element {
         return retour.json();
       })
       .then(arr => {
-        setProduits(arr);
+        // setProduits(arr);
         store.dispatch({type: loadProducts, payload: arr});
       });
   }, []);
@@ -58,4 +61,18 @@ const styles = StyleSheet.create({
   },
 });
 
+function mapStateToProps(ownProps: any, storeState: any) {
+  return {...ownProps, produits: storeState.produits};
+}
+function mapDispatchToProps(dispatch: Function) {
+  return {
+    lodProducts: (produits: Aray<IProduit>) => {
+      dispatch({type: loadProducts, payload: produits});
+    },
+  };
+}
+export const StoreConnectedApp = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(App);
 export default App;
