@@ -1,37 +1,28 @@
-import {View, Text} from 'react-native';
+import {View, Text, ScrollView} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import styles from './ListProduct.styles';
-/**
- * initial value of listProductState
- */
-const listProductInitialStateValue = '';
+import ProduitThumbnail from '../../components/uis/ProduitThumbnail/ProduitThumbnail';
+
 /**
  * ListProduct component
  * @param {object} props ListProduct props of component
  * @returns render of ListProduct component
  */
 const ListProduct = props => {
-  const [listProductState, setlistProductState] = useState(
-    listProductInitialStateValue,
-  );
-  useEffect(() => {
-    console.log('update/mount de de listProductState');
-  }, [listProductState]);
-  useEffect(() => {
-    console.log('mount de de listProduct');
-    return () => {
-      console.log('unmount de de listProduct');
-    };
-  }, []);
   return (
     <View style={styles.ListProduct}>
-      <Text>listProduct</Text>
+      <Text>liste de produits</Text>
+      <View style={styles.scview}>
+        {props.produits.map((p, i) => (
+          <ProduitThumbnail produit={p} key={`p${i}`} />
+        ))}
+      </View>
     </View>
   );
 };
 
-ListProduct.propTypes = {};
+ListProduct.propTypes = {produits: PropTypes.array.isRequired};
 ListProduct.defaultProps = {};
 
 export default ListProduct;
