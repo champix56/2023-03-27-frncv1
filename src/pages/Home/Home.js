@@ -3,7 +3,7 @@ import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import ProduitThumbnail from '../../components/uis/ProduitThumbnail/ProduitThumbnail';
 import Button from '../../components/uis/Button/Button';
-import {useSelector} from 'react-redux'
+import {useSelector} from 'react-redux';
 /**
  * Home component
  * @param {object} props Home props of component
@@ -11,16 +11,15 @@ import {useSelector} from 'react-redux'
  */
 const Home = props => {
   const [selectedPosition, setselectedPosition] = useState(0);
-  // useEffect(() => {
-  //   const intervalRefresProduit = setInterval(() => {
-  //     setselectedPosition(Math.floor(Math.random() * props.produits.length));
-  //     ToastAndroid.show('!! pensez à émarger !!', ToastAndroid.SHORT);
-  //   }, 4000);
-  //   return () => {
-  //     clearInterval(intervalRefresProduit);
-  //   };
-  // }, []);
-  //  let randVal = Math.floor(Math.random() * props.produits.length);
+  useEffect(() => {
+    const intervalRefresProduit = setInterval(() => {
+      setselectedPosition(Math.floor(Math.random() * props.produits.length));
+      //  ToastAndroid.show('!! pensez à émarger !!', ToastAndroid.SHORT);
+    }, 4000);
+    return () => {
+      clearInterval(intervalRefresProduit);
+    };
+  }, []);
   return (
     <View style={styles.Home}>
       <View>
